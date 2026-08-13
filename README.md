@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/assets/images/bus-bg.png" alt="Murir Tin Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;">
+  <img src="assets/images/bus-bg.png" alt="Murir Tin Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;">
   
   # 🌧️ মুড়ির টিন (Murir Tin) 
   **An Immersive Audio-Visual Experience**
@@ -7,7 +7,7 @@
   <p align="center">
     <a href="#about">About</a> •
     <a href="#features">Features</a> •
-    <a href="#installation">Installation</a> •
+    <a href="#installation">Getting Started</a> •
     <a href="#how-to-add-music">Adding Music</a> •
     <a href="#contributing">Contributing</a>
   </p>
@@ -21,68 +21,54 @@
 
 Inspired by minimalist aesthetic audio players (like `saloon.wtf`), this project features a custom-built, zero-friction UI that blends stunning CSS parallax animations with a dynamic local audio engine.
 
+This is a **pure static HTML/CSS/JS version** of the project, specifically optimized for zero-cost hosting on **GitHub Pages**, Vercel, Netlify, or running locally with absolutely no setup required.
+
 ## ✨ Features
 
 - **Immersive 2.5D Environment:** A custom CSS-driven parallax background with dynamic screen-shake (bumpy ride) and high-speed rain overlays.
-- **Dynamic Playlist Engine:** No hardcoding required. The backend automatically scans the `songs/` folder and generates a dynamic playlist on every page load.
-- **Zero-Friction Playback:** Smart autoplay functionality that gracefully handles browser restrictions.
+- **Static Playlist Engine:** A randomized list of classic Bengali rock tracks that plays seamlessly on load.
+- **Zero-Friction Playback:** Smart autoplay functionality that gracefully handles browser restrictions by waiting for the user's first interaction.
 - **Ambient Audio Mixing:** A dedicated, perfectly styled toggle switch to mix in heavy rain and bus engine ambiance on demand.
-- **Custom Frosted-Glass UI:** A beautiful, responsive "pill" style media player built with Tailwind CSS v4.
+- **Custom Frosted-Glass UI:** A beautiful, responsive "pill" style media player built with Tailwind CSS.
 
 ---
 
-## 🚀 Installation
+## 🚀 Getting Started
 
-This project is built on **Laravel 12** and **Tailwind CSS v4** (via Vite).
+Since this is a static site, there are **no dependencies, no PHP, no Composer, and no NPM installs required.**
 
-1. **Clone the repository:**
+### Running Locally:
+1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/murir-tin.git
    cd murir-tin
    ```
+2. Double-click **`index.html`** to open it in any web browser, or serve it locally using a simple VS Code extension like Live Server.
 
-2. **Install PHP dependencies:**
-   ```bash
-   composer install
-   ```
-
-3. **Install NPM dependencies:**
-   ```bash
-   npm install
-   ```
-
-4. **Environment Setup:**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-
-5. **Run the application:**
-   You will need two terminal windows running simultaneously.
-   
-   *Terminal 1 (Backend):*
-   ```bash
-   php artisan serve
-   ```
-   
-   *Terminal 2 (Frontend Assets):*
-   ```bash
-   npm run dev
-   ```
-
-6. Open your browser to `http://127.0.0.1:8000`.
+### Hosting on GitHub Pages (Free):
+1. Push this repository to your GitHub.
+2. Go to **Settings** > **Pages** in your repository.
+3. Under **Branch**, select `main` and root `/(root)`.
+4. Click **Save**—your site is now live!
 
 ---
 
 ## 🎧 How to Add Music
 
-Adding music to the playlist is completely automated!
-
 1. Download your favorite Bengali rock `.mp3` files.
-2. Drag and drop them into the `public/assets/audio/songs/` directory.
-3. Refresh the page! The backend will automatically detect the new files, format the titles, shuffle them, and inject them into the player.
-
-*(Note: To support seamless progress-bar seeking in local development, this project streams audio through a dedicated Laravel route that handles HTTP 206 Partial Content byte-range requests).*
+2. Place them in the `assets/audio/songs/` directory.
+3. Open `index.html` in a text editor and add your songs to the `window.DYNAMIC_PLAYLIST` array near the bottom:
+   ```javascript
+   window.DYNAMIC_PLAYLIST = [
+       { 
+           "title": "Your Song Title", 
+           "artist": "Artist Name", 
+           "file": "assets/audio/songs/your-song.mp3", 
+           "cover": "optional-cover-image-url" 
+       },
+       ...
+   ];
+   ```
 
 ---
 
@@ -90,19 +76,12 @@ Adding music to the playlist is completely automated!
 
 Contributions make the open source community such an amazing place to learn, inspire, and create. Any contributions you make to **Murir Tin** are **greatly appreciated**!
 
-Whether it's optimizing the CSS animations, adding volume sliders, contributing new ambient background tracks, or squashing bugs, we'd love your help.
-
 ### How to Contribute:
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-### Ideas for Contributions:
-- **Visuals:** More dynamic background images or day/night cycle transitions.
-- **Audio:** Custom volume mixer for the rain vs music.
-- **UI:** Keyboard shortcuts (Space to play/pause, arrows to seek).
 
 ---
 
